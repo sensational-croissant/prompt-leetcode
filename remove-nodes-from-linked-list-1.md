@@ -35,7 +35,46 @@ The time complexity is O(n) because we iterate through the linked list once.
 ## Space complexity: O(n)
 The space complexity is O(n) because we store nodes in the stack. In the worst case, the size of the stack could be the same as the number of nodes in the linked list.
 
---------------Linked List--------------# Linked List
+--------------Heap / Priority Queue--------------# Heap / Priority Queue
+
+## Code
+
+``` python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def removeNodes(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if not head:
+            return None
+        
+        stack = []
+        current = head
+        while current:
+            while stack and stack[-1].val < current.val:
+                stack.pop()
+            stack.append(current)
+            current = current.next
+        
+        for i in range(len(stack) - 1):
+            stack[i].next = stack[i + 1]
+        
+        stack[-1].next = None
+        return stack[0]
+```
+
+
+## Time complexity:
+The time complexity is O(n) where n is the number of nodes in the linked list.
+
+## Space complexity:
+The space complexity is O(n) where n is the number of nodes in the linked list, due to the stack used to track nodes.
+
+
+
+<!-- --------------Linked List--------------# Linked List
 
 ## Code
 
@@ -158,42 +197,5 @@ class Solution:
 The time complexity is O(n) where n is the number of nodes in the linked list.
 
 ## Space complexity:
-The space complexity is O(n) in the worst case where all the nodes are in decreasing order of values.
-
---------------Heap / Priority Queue--------------# Heap / Priority Queue
-
-## Code
-
-``` python
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
-class Solution:
-    def removeNodes(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        if not head:
-            return None
-        
-        stack = []
-        current = head
-        while current:
-            while stack and stack[-1].val < current.val:
-                stack.pop()
-            stack.append(current)
-            current = current.next
-        
-        for i in range(len(stack) - 1):
-            stack[i].next = stack[i + 1]
-        
-        stack[-1].next = None
-        return stack[0]
-```
-
-
-## Time complexity:
-The time complexity is O(n) where n is the number of nodes in the linked list.
-
-## Space complexity:
-The space complexity is O(n) where n is the number of nodes in the linked list, due to the stack used to track nodes.
+The space complexity is O(n) in the worst case where all the nodes are in decreasing order of values. -->
 
