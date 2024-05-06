@@ -18,7 +18,7 @@ def get_response(system_prompt, user_prompt):
         {"role": "user", "content": user_prompt},
     ]
     response = client.chat.completions.create(
-        model="gpt-3.5-turbo-0125", messages=messages, temperature=0
+        model="gpt-3.5-turbo-1106", messages=messages, temperature=1
     )
 
     return response.choices[0].message.content
