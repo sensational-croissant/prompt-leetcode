@@ -93,3 +93,4 @@ for method in methods:
     with open("remove-nodes-from-linked-list.md", "a") as myfile:
         myfile.write(f"--------------{method}--------------")
         myfile.write(response)
+        myfile.write("\n\n")
