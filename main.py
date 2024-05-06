@@ -18,7 +18,7 @@ def get_response(system_prompt, user_prompt):
         {"role": "user", "content": user_prompt},
     ]
     response = client.chat.completions.create(
-        model="gpt-3.5-turbo-1106", messages=messages, temperature=1
+        model="gpt-4", messages=messages, temperature=1
     )
 
     return response.choices[0].message.content
@@ -54,7 +54,7 @@ The number of the nodes in the given list is in the range [1, 105].
 """
 
 
-methods = ["Stack", "Linked List", "Trees", "Tries", "Heap / Priority Queue"]
+methods = ["Heap / Priority Queue"]
 
 for method in methods:
 
