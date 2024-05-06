@@ -54,7 +54,7 @@ The number of the nodes in the given list is in the range [1, 105].
 """
 
 
-methods = ["Heap / Priority Queue"]
+methods = ["Arrays & Hashing", "Two Pointers", "Sliding Window", "Binary Search", "Backtracking", "Graphs", "Advanced Graphs", "1-D Dynamic Programming", "2-D Dynamic Programming", "Greedy", "Intervals", "Math & Geometry", "Bit Manipulation"]
 
 for method in methods:
 
