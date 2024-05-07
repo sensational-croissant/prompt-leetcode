@@ -1,55 +1,36 @@
-There is a singly-linked list `head` and we want to delete a node `node`
-in it.
+# 2816. Double a Number Represented as a Linked List
 
-You are given the node to be deleted `node`. You will **not be given
-access** to the first node of `head`.
+You are given the `head` of a **non-empty** linked list representing a
+non-negative integer without leading zeroes.
 
-All the values of the linked list are **unique**, and it is guaranteed
-that the given node `node` is not the last node in the linked list.
-
-Delete the given node. Note that by deleting the node, we do not mean
-removing it from memory. We mean:
-
--   The value of the given node should not exist in the linked list.
--   The number of nodes in the linked list should decrease by one.
--   All the values before `node` should be in the same order.
--   All the values after `node` should be in the same order.
-
-**Custom testing:**
-
--   For the input, you should provide the entire linked list `head` and
-    the node to be given `node`. `node` should not be the last node of
-    the list and should be an actual node in the list.
--   We will build the linked list and pass the node to your function.
--   The output will be the entire list after calling your function.
+Return *the* `head` *of the linked list after **doubling** it*.
 
  
 
 **Example 1:**
 
-<img src="https://assets.leetcode.com/uploads/2020/09/01/node1.jpg"
-style="width: 400px; height: 286px;" />
+<img src="https://assets.leetcode.com/uploads/2023/05/28/example.png"
+style="width: 401px; height: 81px;" />
 
-    Input: head = [4,5,1,9], node = 5
-    Output: [4,1,9]
-    Explanation: You are given the second node with value 5, the linked list should become 4 -> 1 -> 9 after calling your function.
+    Input: head = [1,8,9]
+    Output: [3,7,8]
+    Explanation: The figure above corresponds to the given linked list which represents the number 189. Hence, the returned linked list represents the number 189 * 2 = 378.
 
 **Example 2:**
 
-<img src="https://assets.leetcode.com/uploads/2020/09/01/node2.jpg"
-style="width: 400px; height: 315px;" />
+<img src="https://assets.leetcode.com/uploads/2023/05/28/example2.png"
+style="width: 401px; height: 81px;" />
 
-    Input: head = [4,5,1,9], node = 1
-    Output: [4,5,9]
-    Explanation: You are given the third node with value 1, the linked list should become 4 -> 5 -> 9 after calling your function.
+    Input: head = [9,9,9]
+    Output: [1,9,9,8]
+    Explanation: The figure above corresponds to the given linked list which represents the number 999. Hence, the returned linked list reprersents the number 999 * 2 = 1998. 
 
  
 
 **Constraints:**
 
--   The number of the nodes in the given list is in the range
-    `[2, 1000]`.
--   `-1000 <= Node.val <= 1000`
--   The value of each node in the list is **unique**.
--   The `node` to be deleted is **in the list** and is **not a tail**
-    node.
+-   The number of nodes in the list is in the range
+    `[1, 10`<sup>`4`</sup>`]`
+-   `0 <= Node.val <= 9`
+-   The input is generated such that the list represents a number that
+    does not have leading zeros, except the number `0` itself.

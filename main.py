@@ -7,90 +7,30 @@ from openai import OpenAI
 load_dotenv()
 openai.api_key = os.environ["OPENAI_API_KEY"]
 
-# Set your API key
+
 client = OpenAI()
 
+response = client.chat.completions.create(
+  model="gpt-3.5-turbo",
+  messages=[
+    {
+      "role": "system",
+      "content": "2816. Double a Number Represented as a Linked List\nYou are given the head of a non-empty linked list representing a non-negative integer without leading zeroes.\n\nReturn the head of the linked list after doubling it.\n\nExample 1:\n\n\n\nInput: head = [1,8,9]\nOutput: [3,7,8]\nExplanation: The figure above corresponds to the given linked list which represents the number 189. Hence, the returned linked list represents the number 189 * 2 = 378.\nExample 2:\n\n\n\nInput: head = [9,9,9]\nOutput: [1,9,9,8]\nExplanation: The figure above corresponds to the given linked list which represents the number 999. Hence, the returned linked list reprersents the number 999 * 2 = 1998. \nConstraints:\n\nThe number of nodes in the list is in the range [1, 104]\n0 <= Node.val <= 9\nThe input is generated such that the list represents a number that does not have leading zeros, except the number 0 itself."
+    },
+    {
+      "role": "user",
+      "content": "# Definition for singly-linked list.\n# class ListNode:\n#     def __init__(self, val=0, next=None):\n#         self.val = val\n#         self.next = next\nclass Solution:\n    def doubleIt(self, head: Optional[ListNode]) -> Optional[ListNode]:\n        "
+    },
+    {
+      "role": "assistant",
+      "content": "To double a number represented as a linked list, we can follow these steps:\n1. Reverse the linked list to facilitate the multiplication by 2 operation.\n2. Initialize a variable carry as 0.\n3. Traverse the reversed linked list and for each node, multiply its value by 2, add the carry, and update the carry accordingly.\n4. After the traversal is complete, if there is a non-zero carry left, create a new node with the carry as its value and add it to the beginning of the list.\n5. Reverse the list again to return it to its original order.\n\nHere is the implementation of the above approach:\n\n```python\n# Definition for singly-linked list.\n# class ListNode:\n#     def __init__(self, val=0, next=None):\n#         self.val = val\n#         self.next = next\n\nclass Solution:\n    def reverseLinkedList(self, head):\n        prev = None\n        curr = head\n        while curr"
+    }
+  ],
+  temperature=1,
+  max_tokens=256,
+  top_p=1,
+  frequency_penalty=0,
+  presence_penalty=0
+)
 
-def get_response(system_prompt, user_prompt):
-    # Assign the role and content for each message
-    messages = [
-        {"role": "system", "content": system_prompt},
-        {"role": "user", "content": user_prompt},
-    ]
-    response = client.chat.completions.create(
-        model="gpt-4", messages=messages, temperature=1
-    )
-
-    return response.choices[0].message.content
-    
-# Craft a prompt that asks the model for the function
-user_prompt = f"""
-2487. Remove Nodes From Linked List
-You are given the head of a linked list.
-
-Remove every node which has a node with a greater value anywhere to the right side of it.
-
-Return the head of the modified linked list.
-
-Example 1:
-
-
-
-Input: head = [5,2,13,3,8]
-Output: [13,8]
-Explanation: The nodes that should be removed are 5, 2 and 3.
-- Node 13 is to the right of node 5.
-- Node 13 is to the right of node 2.
-- Node 8 is to the right of node 3.
-Example 2:
-
-Input: head = [1,1,1,1]
-Output: [1,1,1,1]
-Explanation: Every node has value 1, so no nodes are removed.
-Constraints:
-
-The number of the nodes in the given list is in the range [1, 105].
-1 <= Node.val <= 105
-"""
-
-
-methods = ["Arrays & Hashing", "Two Pointers", "Sliding Window", "Binary Search", "Backtracking", "Graphs", "Advanced Graphs", "1-D Dynamic Programming", "2-D Dynamic Programming", "Greedy", "Intervals", "Math & Geometry", "Bit Manipulation"]
-
-for method in methods:
-
-
-    # Define the system prompt
-    system_prompt = f"""You are provided with input-output examples for a Python function to solve a LeetCode problem and return in this format: 
-
-    # {method}
-
-    ## Code
-
-    ``` python
-    # Definition for singly-linked list.
-    # class ListNode:
-    #     def __init__(self, val=0, next=None):
-    #         self.val = val
-    #         self.next = next
-    class Solution:
-        def removeNodes(self, head: Optional[ListNode]) -> Optional[ListNode]:
-
-        
-    ```
-
-    ## Time complexity:
-
-    ## Space complexity:
-    """
-
-
-
-    # Get the response to the user prompt
-    response = get_response(system_prompt, user_prompt)
-
-    print(response)
-
-    with open("remove-nodes-from-linked-list.md", "a") as myfile:
-        myfile.write(f"--------------{method}--------------")
-        myfile.write(response)
-        myfile.write("\n\n")
+print(response.choices[0].message.content)
