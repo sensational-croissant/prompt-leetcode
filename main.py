@@ -36,4 +36,5 @@ response = client.chat.completions.create(
 response_text = response.choices[0].message.content
 print(response_text)
 
-myfile.write(response_text)
+with open("double-a-number-represented-as-a-linked-list.md", "a") as myfile:
+  myfile.write(response_text)
