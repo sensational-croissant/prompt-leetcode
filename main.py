@@ -33,4 +33,7 @@ response = client.chat.completions.create(
   presence_penalty=0
 )
 
-print(response.choices[0].message.content)
+response_text = response.choices[0].message.content
+print(response_text)
+
+myfile.write(response_text)
