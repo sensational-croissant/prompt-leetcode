@@ -6,7 +6,6 @@ from openai import OpenAI
 
 load_dotenv()
 openai.api_key = os.environ["OPENAI_API_KEY"]
-
 client = OpenAI()
 
 response = client.chat.completions.create(
@@ -19,10 +18,6 @@ response = client.chat.completions.create(
     {
       "role": "user",
       "content": "# <Name of the DSA>\n\n## Code\n``` python\nclass Solution:\n    def findRelativeRanks(self, score: List[int]) -> List[str]:\n```\n\n## Time Complexity:\n\n## Space Complexity:"
-    },
-    {
-      "role": "assistant",
-      "content": "## Code\n``` python\nfrom typing import List\n\nclass Solution:\n    def findRelativeRanks(self, score: List[int]) -> List[str]:\n        sorted_score = sorted(score, reverse=True)\n        rank_dict = {}\n        for i in range(len(sorted_score)):\n            if i == 0:\n                rank_dict[sorted_score[i]] = \"Gold Medal\"\n            elif i == 1:\n                rank_dict[sorted_score[i"
     }
   ],
   temperature=1,
