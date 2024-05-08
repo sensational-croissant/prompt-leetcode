@@ -1,36 +1,43 @@
-# 2816. Double a Number Represented as a Linked List
+# 506. Relative Ranks
 
-You are given the `head` of a **non-empty** linked list representing a
-non-negative integer without leading zeroes.
+You are given an integer array `score` of size `n`, where `score[i]` is
+the score of the `i`<sup>`th`</sup> athlete in a competition. All the
+scores are guaranteed to be **unique**.
 
-Return *the* `head` *of the linked list after **doubling** it*.
+The athletes are **placed** based on their scores, where the
+`1`<sup>`st`</sup> place athlete has the highest score, the
+`2`<sup>`nd`</sup> place athlete has the `2`<sup>`nd`</sup> highest
+score, and so on. The placement of each athlete determines their rank:
+
+-   The `1`<sup>`st`</sup> place athlete's rank is `"Gold Medal"`.
+-   The `2`<sup>`nd`</sup> place athlete's rank is `"Silver Medal"`.
+-   The `3`<sup>`rd`</sup> place athlete's rank is `"Bronze Medal"`.
+-   For the `4`<sup>`th`</sup> place to the `n`<sup>`th`</sup> place
+    athlete, their rank is their placement number (i.e., the
+    `x`<sup>`th`</sup> place athlete's rank is `"x"`).
+
+Return an array `answer` of size `n` where `answer[i]` is the **rank**
+of the `i`<sup>`th`</sup> athlete.
 
  
 
 **Example 1:**
 
-<img src="https://assets.leetcode.com/uploads/2023/05/28/example.png"
-style="width: 401px; height: 81px;" />
-
-    Input: head = [1,8,9]
-    Output: [3,7,8]
-    Explanation: The figure above corresponds to the given linked list which represents the number 189. Hence, the returned linked list represents the number 189 * 2 = 378.
+    Input: score = [5,4,3,2,1]
+    Output: ["Gold Medal","Silver Medal","Bronze Medal","4","5"]
+    Explanation: The placements are [1st, 2nd, 3rd, 4th, 5th].
 
 **Example 2:**
 
-<img src="https://assets.leetcode.com/uploads/2023/05/28/example2.png"
-style="width: 401px; height: 81px;" />
-
-    Input: head = [9,9,9]
-    Output: [1,9,9,8]
-    Explanation: The figure above corresponds to the given linked list which represents the number 999. Hence, the returned linked list reprersents the number 999 * 2 = 1998. 
+    Input: score = [10,3,8,9,4]
+    Output: ["Gold Medal","5","Bronze Medal","Silver Medal","4"]
+    Explanation: The placements are [1st, 5th, 3rd, 2nd, 4th].
 
  
 
 **Constraints:**
 
--   The number of nodes in the list is in the range
-    `[1, 10`<sup>`4`</sup>`]`
--   `0 <= Node.val <= 9`
--   The input is generated such that the list represents a number that
-    does not have leading zeros, except the number `0` itself.
+-   `n == score.length`
+-   `1 <= n <= 10`<sup>`4`</sup>
+-   `0 <= score[i] <= 10`<sup>`6`</sup>
+-   All the values in `score` are **unique**.
