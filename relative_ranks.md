@@ -129,3 +129,29 @@ class Solution:
 
 # Time Complexity: O(n log n) - Sorting the scores in descending order takes O(n log n) time.
 # Space Complexity: O(n) - Used additional space to store the ranks and the rank dictionary.
+
+-------------------------------------------------------------------------------
+# Code
+```python
+from typing import List
+
+class Solution:
+    def findRelativeRanks(self, score: List[int]) -> List[str]:
+        rank_map = {0: "Gold Medal", 1: "Silver Medal", 2: "Bronze Medal"}
+        
+        sorted_score = sorted(score, reverse=True)
+        rank = {}
+        for i, s in enumerate(sorted_score):
+            if i in rank_map:
+                rank[s] = rank_map[i]
+            else:
+                rank[s] = str(i+1)
+        
+        return [rank[s] for s in score]
+```
+
+# Time Complexity
+The time complexity of this solution is O(n log n) due to sorting the scores.
+
+# Space Complexity
+The space complexity is O(n) to store the ranks.
