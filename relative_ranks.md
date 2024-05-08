@@ -19,3 +19,10 @@ class Solution:
         
         return score
 ```
+
+-------------------------------------------------------------------------------
+## Time Complexity:
+The time complexity of this solution is O(n log n) due to the sorting of the scores array.
+
+## Space Complexity:
+The space complexity of this solution is O(n) to store the rank dictionary.
