@@ -150,3 +150,74 @@ The time complexity of this solution is O(n log n), where n is the number of ath
 
 # Space Complexity
 The space complexity is O(n) to store the sorted indices.
+
+-------------------------------------------------------------------------------
+# Code
+```python
+from typing import List
+
+class Solution:
+    def findRelativeRanks(self, score: List[int]) -> List[str]:
+        sorted_score = sorted(score, reverse=True)
+        rank_map = {score: str(i+1) for i, score in enumerate(sorted_score)}
+        
+        medals = ["Gold Medal", "Silver Medal", "Bronze Medal"]
+        result = []
+        
+        for s in score:
+            if rank_map[s] in medals:
+                result.append(rank_map[s])
+            else:
+                result.append(rank_map[s])
+        
+        return result
+```
+
+-------------------------------------------------------------------------------
+# Code
+```python
+from typing import List
+
+class Solution:
+    def findRelativeRanks(self, score: List[int]) -> List[str]:
+        sorted_score = sorted(score, reverse=True)
+        rank_map = {score: str(i+1) for i, score in enumerate(sorted_score)}
+        
+        result = []
+        for s in score:
+            rank = rank_map[s]
+            if rank == '1':
+                result.append("Gold Medal")
+            elif rank == '2':
+                result.append("Silver Medal")
+            elif rank == '3':
+                result.append("Bronze Medal")
+            else:
+                result.append(rank)
+                
+        return result
+```
+
+-------------------------------------------------------------------------------
+# Code
+```python
+from typing import List
+
+class Solution:
+    def findRelativeRanks(self, score: List[int]) -> List[str]:
+        sorted_score = sorted(score, reverse=True)
+        rank_dict = {sorted_score[i]: str(i+1) for i in range(len(sorted_score))}
+        
+        result = []
+        for s in score:
+            if rank_dict[s] == "1":
+                result.append("Gold Medal")
+            elif rank_dict[s] == "2":
+                result.append("Silver Medal")
+            elif rank_dict[s] == "3":
+                result.append("Bronze Medal")
+            else:
+                result.append(rank_dict[s])
+        
+        return result
+```

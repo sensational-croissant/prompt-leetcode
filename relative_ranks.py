@@ -6,6 +6,7 @@ from openai import OpenAI
 
 load_dotenv()
 openai.api_key = os.environ["OPENAI_API_KEY"]
+from openai import OpenAI
 client = OpenAI()
 
 response = client.chat.completions.create(
@@ -17,7 +18,7 @@ response = client.chat.completions.create(
     },
     {
       "role": "user",
-      "content": "# Code\n``` python\nclass Solution:\n    def findRelativeRanks(self, score: List[int]) -> List[str]:\n```\n\n# Time Complexity\n\n# Space Complexity\n"
+      "content": "# Code\n``` python\nclass Solution:\n    def findRelativeRanks(self, score: List[int]) -> List[str]:\n```\n\n# Time Complexity\n\n# Space Complexity: O(1)\n"
     }
   ],
   temperature=1,
