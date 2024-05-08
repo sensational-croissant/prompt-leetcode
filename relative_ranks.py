@@ -17,7 +17,7 @@ response = client.chat.completions.create(
     },
     {
       "role": "user",
-      "content": "# <Name of the approach>\n\n## Code\n``` python\nclass Solution:\n    def findRelativeRanks(self, score: List[int]) -> List[str]:\n```\n\n## Time Complexity:\n\n## Space Complexity:"
+      "content": "# Code\n``` python\nclass Solution:\n    def findRelativeRanks(self, score: List[int]) -> List[str]:\n```\n\n# Time Complexity:\n\n# Space Complexity:"
     }
   ],
   temperature=1,
