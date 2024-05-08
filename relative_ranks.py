@@ -7,9 +7,7 @@ from openai import OpenAI
 load_dotenv()
 openai.api_key = os.environ["OPENAI_API_KEY"]
 
-
 client = OpenAI()
-
 
 response = client.chat.completions.create(
   model="gpt-3.5-turbo",
@@ -20,7 +18,7 @@ response = client.chat.completions.create(
     },
     {
       "role": "user",
-      "content": "class Solution:\n    def findMaxK(self, nums: List[int]) -> int:"
+      "content": "class Solution:\n    def findRelativeRanks(self, score: List[int]) -> List[str]:"
     }
   ],
   temperature=1,
@@ -34,4 +32,5 @@ response_text = response.choices[0].message.content
 print(response_text)
 
 with open("relative_ranks.md", "a") as myfile:
+  myfile.write("\n\n-------------------------------------------------------------------------------\n")
   myfile.write(response_text)
