@@ -125,3 +125,28 @@ The time complexity is O(n log n) due to sorting the scores.
 
 # Space Complexity
 The space complexity is O(n) to store the sorted scores and the rank dictionary.
+
+-------------------------------------------------------------------------------
+# Code
+```python
+from typing import List
+
+class Solution:
+    def findRelativeRanks(self, score: List[int]) -> List[str]:
+        sort_rank = {0: "Gold Medal", 1: "Silver Medal", 2: "Bronze Medal"}
+        
+        sorted_score = sorted(enumerate(score), key=lambda x: x[1], reverse=True)
+        
+        result = [0] * len(score)
+        
+        for i, (index,_) in enumerate(sorted_score):
+            result[index] = sort_rank.get(i, str(i + 1))
+        
+        return result
+``` 
+
+# Time Complexity
+The time complexity of this solution is O(n log n), where n is the number of athletes.
+
+# Space Complexity
+The space complexity is O(n) to store the sorted indices.
