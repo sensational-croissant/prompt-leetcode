@@ -221,3 +221,133 @@ class Solution:
         
         return result
 ```
+
+-------------------------------------------------------------------------------
+# Code
+```python
+from typing import List
+
+class Solution:
+    def findRelativeRanks(self, score: List[int]) -> List[str]:
+        sorted_score = sorted(score, reverse=True)
+        rank_map = {}
+        
+        for i in range(len(sorted_score)):
+            if i == 0:
+                rank_map[sorted_score[i]] = "Gold Medal"
+            elif i == 1:
+                rank_map[sorted_score[i]] = "Silver Medal"
+            elif i == 2:
+                rank_map[sorted_score[i]] = "Bronze Medal"
+            else:
+                rank_map[sorted_score[i]] = str(i + 1)
+        
+        return [rank_map[score[i]] for i in range(len(score))]
+```
+
+# Time Complexity
+The time complexity of this solution is O(n log n) due to the sorting of scores.
+
+# Space Complexity
+The space complexity is O(n) to store the sorted scores and rank mapping.
+
+-------------------------------------------------------------------------------
+# Code
+``` python
+from typing import List
+
+class Solution:
+    def findRelativeRanks(self, score: List[int]) -> List[str]:
+        sorted_scores = sorted(score, reverse=True)
+        rank_map = {sorted_scores[i]: str(i+1) for i in range(len(sorted_scores))}
+        
+        result = []
+        for s in score:
+            rank = rank_map[s]
+            if rank == "1":
+                result.append("Gold Medal")
+            elif rank == "2":
+                result.append("Silver Medal")
+            elif rank == "3":
+                result.append("Bronze Medal")
+            else:
+                result.append(rank)
+        
+        return result
+```
+
+# Time Complexity
+The time complexity of this solution is O(n log n) due to sorting the scores array.
+
+# Space Complexity
+The space complexity is O(n) where n is the number of athletes.
+
+-------------------------------------------------------------------------------
+# Code
+```python
+from typing import List
+
+class Solution:
+    def findRelativeRanks(self, score: List[int]) -> List[str]:
+        sorted_scores = sorted(score, reverse=True)
+        rank_map = {sorted_scores[i]: str(i+1) for i in range(len(sorted_scores))}
+        
+        medals = ["Gold Medal", "Silver Medal", "Bronze Medal"]
+        result = []
+        
+        for s in score:
+            if rank_map[s] in medals:
+                result.append(rank_map[s])
+            else:
+                result.append(rank_map[s])
+        
+        return result
+```
+
+# Time Complexity
+The time complexity of sorting the scores is O(nlogn) where n is the number of athletes. Retrieving the ranks from the map takes O(n). Overall, the time complexity is O(nlogn).
+
+# Space Complexity
+The space complexity is O(n) due to the extra space used to store the sorted scores and the rank map.
+
+-------------------------------------------------------------------------------
+# Code
+```python
+class Solution:
+    def findRelativeRanks(self, score: List[int]) -> List[str]:
+        sorted_scores = sorted([(s, i) for i, s in enumerate(score)], reverse=True)
+        ranks = ['' for _ in range(len(score))]
+        
+        for rank, (s, i) in enumerate(sorted_scores):
+            if rank == 0:
+                ranks[i] = "Gold Medal"
+            elif rank == 1:
+                ranks[i] = "Silver Medal"
+            elif rank == 2:
+                ranks[i] = "Bronze Medal"
+            else:
+                ranks[i] = str(rank+1)
+        return ranks
+```
+
+# Time Complexity
+The time complexity is O(n log n) because we sort the scores.
+
+# Space Complexity
+The space complexity is O(n) because we keep the sorted scores and ranks in additional data structures.
+
+-------------------------------------------------------------------------------
+# Code
+``` python
+class Solution:
+    def findRelativeRanks(self, score):
+        sort = sorted(score)[::-1]
+        rank = ["Gold Medal", "Silver Medal", "Bronze Medal"] + list(map(str, range(4, len(score) + 1)))
+        return list(map(dict(zip(sort, rank)).get, score))
+```
+
+# Time Complexity
+The time complexity is O(n log n) because we are sorting the scores.
+
+# Space Complexity
+The space complexity is O(n) because we are creating a new sorted list and a rank list.
