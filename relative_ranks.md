@@ -56,3 +56,59 @@ The time complexity of this solution is O(n log n) due to the sorting of the sco
 
 ## Space Complexity:
 The space complexity of this solution is O(n) as we are creating a dictionary to store the ranks.
+
+-------------------------------------------------------------------------------
+# Relative Ranks
+
+## Code
+``` python
+from typing import List
+
+class Solution:
+    def findRelativeRanks(self, score: List[int]) -> List[str]:
+        sorted_score = sorted(score, reverse=True)
+        rank_dict = {score: rank for rank, score in enumerate(sorted_score, 1)}
+        result = []
+        
+        for s in score:
+            rank = rank_dict[s]
+            if rank == 1:
+                result.append("Gold Medal")
+            elif rank == 2:
+                result.append("Silver Medal")
+            elif rank == 3:
+                result.append("Bronze Medal")
+            else:
+                result.append(str(rank))
+        
+        return result
+```
+
+## Time Complexity: O(n log n) - time taken for sorting the scores
+
+## Space Complexity: O(n) - used for the rank_dict and result lists
+
+-------------------------------------------------------------------------------
+# Iterative Approach
+
+## Code
+```python
+from typing import List
+
+class Solution:
+    def findRelativeRanks(self, score: List[int]) -> List[str]:
+        sorted_score = sorted(score, reverse=True)
+        rank_map = {}
+        medals = ["Gold Medal", "Silver Medal", "Bronze Medal"]
+        
+        for i in range(len(sorted_score)):
+            if i < 3:
+                rank_map[sorted_score[i]] = medals[i]
+            else:
+                rank_map[sorted_score[i]] = str(i+1)
+        
+        return [rank_map[score[i]] for i in range(len(score))]
+```
+
+## Time Complexity: O(n log n) - sorting the score array
+## Space Complexity: O(n) - used additional space for storing ranks and medals
